@@ -1,9 +1,9 @@
 import { Router } from "express";
-import { getPlanet, getPlanetById, addPlanet, deletePlanetById, updatePlanetById } from "../controllers/planetController.js"
+import { getPlanets, getPlanetById, addPlanet, deletePlanetById, updatePlanetById } from "../controllers/planetController.js"
 
 const router = Router();
 
-router.get('/', getPlanet);
+router.get('/', getPlanets);
 
 router.get('/:id', getPlanetById);
 
