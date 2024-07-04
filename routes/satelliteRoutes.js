@@ -1,10 +1,13 @@
 import { Router } from "express";
-import { getSatellite, getSatelliteById, addSatellite, deleteSatelliteById, updateSatelliteById } from "../controllers/satelliteController.js"
+import { getSatellites, getSatelliteById, getSatelliteByPlanetName, addSatellite, deleteSatelliteById, updateSatelliteById } from "../controllers/satelliteController.js";
+
 const router = Router();
 
-router.get('/', getSatellite);
+router.get('/', getSatellites);
 
 router.get('/:id', getSatelliteById);
+
+router.get('/planet/:name', getSatelliteByPlanetName);
 
 router.post('/', addSatellite);
 

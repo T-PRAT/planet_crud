@@ -1,23 +1,30 @@
 [
-	{
-		"id": "4eec9b2a-c7c1-4a2d-92f4-c22b67c0d59f",
-		"name": "moon",
-		"planet_id": "50e12c97-c84c-42cf-8c87-0aec7b59fdb6",
-		"distance_to_planet": "384400",
-		"radius": "1737.1"
-	},
-	{
-		"id": "f4b3b3b3-1b3b-4b3b-8b3b-0b3b3b3b3b3b",
-		"name": "phobos",
-		"planet_id": "6b2f3b8d-7c9e-4f69-a725-3f0a72e1b532",
-		"distance_to_planet": "9376",
-		"radius": "11.1"
-	},
-	{
-		"id": "2a3f287c-9359-47b3-a9e1-729e73e3a1f2",
-		"name": "europa",
-		"planet_id": "50e12c97-c84c-42cf-8c87-0aec7b59fdb6",
-		"distance_to_planet": "671100",
-		"radius": "1560.8"
-	}
+  {
+    "id": "4eec9b2a-c7c1-4a2d-92f4-c22b67c0d59f",
+    "name": "moon",
+    "planet_name": "earth",
+    "distance_to_planet": "384400",
+    "radius": "1737.1"
+  },
+  {
+    "id": "f4b3b3b3-1b3b-4b3b-8b3b-0b3b3b3b3b3b",
+    "name": "phobos",
+    "planet_name": "mars",
+    "distance_to_planet": "9376",
+    "radius": "11.1"
+  },
+  {
+    "id": "2a3f287c-9359-47b3-a9e1-729e73e3a1f2",
+    "name": "europa",
+    "planet_name": "jupiter",
+    "distance_to_planet": "664 862",
+    "radius": "1560.8"
+  },
+  {
+    "id": "2a6f287c-1351-47b3-59e1-729e73e3a1f2",
+    "name": "ganymede",
+    "planet_name": "jupiter",
+    "distance_to_planet": "1 070 400",
+    "radius": "5262.4"
+  }
 ]

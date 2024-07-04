@@ -8,7 +8,7 @@ export const findPlanets = () => {
 
 export const findPlanetById = (id) => {
 	const planets = findPlanets()
-	return planets.find((i) => i.id == id)
+	return planets.find((planet) => planet.id == id)
 }
 
 export const pushPlanet = (newPlanet) => {
