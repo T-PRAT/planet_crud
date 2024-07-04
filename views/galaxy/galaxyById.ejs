@@ -1,0 +1,36 @@
+!<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= title %></title>
+  </head>
+  <style>
+    table {
+      background-color: red;
+      color: white;
+      border-collapse: collapse;
+      width: 100%;
+    }
+    th {
+      text-align: center;
+      padding: 8px;
+    }
+  </style>
+  <body>
+    <ul>
+      <li><a href="/views/">Home</a></li>
+      <li><a href="/views/planets">Planets</a></li>
+      <li><a href="/views/satellites">Satellites</a></li>
+      <li><a href="/views/galaxies">Galaxies</a></li>
+    </ul>
+    <table>
+      <tr>
+        <strong><%= galaxy.name %></strong>
+        <th><%= galaxy.type %></th>
+        <th><%= galaxy.age %></th>
+        <th><%= galaxy.diameter %></th>
+      </tr>
+    </table>
+  </body>
+</html>

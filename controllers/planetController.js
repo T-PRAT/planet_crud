@@ -1,5 +1,5 @@
 import { APIResponse } from "../utils/response.js";
-import { findPlanets, findPlanetById, pushPlanet, destroyPlanet, updatePlanet } from "../models/planetModel.js";
+import { findPlanets, findPlanetById, findPlanetsBySolarSystemName, pushPlanet, destroyPlanet, updatePlanet } from "../models/planetModel.js";
 import crypto from 'crypto';
 
 export const getPlanets = (req, res) => {
@@ -10,6 +10,11 @@ export const getPlanets = (req, res) => {
 export const getPlanetById = (req, res) => {
 	const planet = findPlanetById(req.params.id);
 	APIResponse(res, planet, "Planet found");
+};
+
+export const getPlanetBySolarSystemName = (req, res) => {
+	const planets = findPlanetsBySolarSystemName(req.params.name);
+	APIResponse(res, planets, planets.length + " planets found");
 };
 
 export const addPlanet = (req, res) => {

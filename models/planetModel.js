@@ -11,6 +11,12 @@ export const findPlanetById = (id) => {
 	return planets.find((planet) => planet.id == id)
 }
 
+export const findPlanetsBySolarSystemName = (name) => {
+	const planets = findPlanets()
+	console.log(name)
+	return planets.filter((planet) => planet.planetary_system == name)
+}
+
 export const pushPlanet = (newPlanet) => {
 	const planets = findPlanets();
 	planets.push(newPlanet);

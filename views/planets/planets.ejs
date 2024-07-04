@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= title %></title>
+    <style>
+      h1 {
+        text-align: center;
+      }
+      table {
+        border-collapse: collapse;
+        width: 100%;
+      }
+      th,
+      td {
+        text-align: left;
+        padding: 8px;
+      }
+      th {
+        background-color: #21c5f7;
+        color: white;
+      }
+      tr:nth-child(even) {
+        background-color: #f2f2f2;
+      }
+      tr:hover {
+        background-color: #ddd;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Planets list</h1>
+    <ul>
+      <li><a href="/views/">Home</a></li>
+      <li><a href="/views/satellites">Satellites</a></li>
+      <li><a href="/views/systems/">Planetary systems</a></li>
+      <li><a href="/views/galaxies">Galaxies</a></li>
+    </ul>
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Distance to sun</th>
+        <th>Radius</th>
+        <th>Mass</th>
+      </tr>
+      <% planets.forEach(planet => { %>
+      <tr>
+        <td>
+          <a href="/views/planets/<%= planet.id %>"><strong><%= planet.name %></strong></a>
+        </td>
+        <td><%= planet.type %></td>
+        <td><%= planet.distance_to_sun %></td>
+        <td><%= planet.radius %></td>
+        <td><%= planet.mass %></td>
+      </tr>
+      <% }) %>
+      <tr></tr>
+    </table>
+  </body>
+</html>

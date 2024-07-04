@@ -1,0 +1,26 @@
+[
+	{
+		"id": "a1b2c3d4-e4f5-4g6h-7i8j-9k0l1m2n3o4p",
+		"name": "Solar System",
+		"star": "Sun",
+		"star_type": "G-type main-sequence star",
+		"age": 4.603,
+		"galaxy_name": "Milky Way"
+	},
+	{
+		"id": "b1c2d3e4-f4g5-4h6i-7j8k-9l0m1n2o3p4q",
+		"name": "TRAPPIST-1 System",
+		"star": "TRAPPIST-1",
+		"star_type": "M-type ultracool dwarf",
+		"age": 7.6,
+		"galaxy_name": "Milky Way"
+	},
+	{
+		"id": "c1d2e3f4-g4h5-4i6j-7k8l-9m0n1o2p3q4r",
+		"name": "Kepler-90 System",
+		"star": "Kepler-90",
+		"star_type": "G-type star",
+		"age": 2.5,
+		"galaxy_name": "Milky Way"
+	}
+]

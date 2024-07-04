@@ -5,7 +5,8 @@
 		"type": "telluric",
 		"distance_to_sun": 149.6,
 		"radius": 6371,
-		"mass": 5.972e24
+		"mass": 5.972e24,
+		"planetary_system": "Solar System"
 	},
 	{
 		"id": "6b2f3b8d-7c9e-4f69-a725-3f0a72e1b532",
@@ -13,7 +14,8 @@
 		"type": "telluric",
 		"distance_to_sun": 227.9,
 		"radius": 3389.5,
-		"mass": 6.39e23
+		"mass": 6.39e23,
+		"planetary_system": "Solar System"
 	},
 	{
 		"id": "c764c66c-0f2e-46c2-9137-0b54a05a0e5d",
@@ -21,7 +23,8 @@
 		"type": "gaseous",
 		"distance_to_sun": 778.5,
 		"radius": 69911,
-		"mass": 1.898e27
+		"mass": 1.898e27,
+		"planetary_system": "Solar System"
 	},
 	{
 		"id": "70e4d76a-0f7e-4b2a-a65b-80e906825a8f",
@@ -29,6 +32,34 @@
 		"type": "neptunian",
 		"distance_to_sun": 4495.1,
 		"radius": 24622,
-		"mass": 1.024e26
+		"mass": 1.024e26,
+		"planetary_system": "Solar System"
+	},
+	{
+		"id": "83f8afe4-e45e-467a-99a0-746f3b8d2c4e",
+		"name": "TRAPPIST-1b",
+		"type": "telluric",
+		"distance_to_star": 0.011,
+		"radius": 1.086,
+		"mass": 1.017,
+		"planetary_system": "TRAPPIST-1 System"
+	},
+	{
+		"id": "d2a6e47a-b75a-40d4-a2d7-f1e095f86e8f",
+		"name": "TRAPPIST-1c",
+		"type": "telluric",
+		"distance_to_star": 0.015,
+		"radius": 1.056,
+		"mass": 1.156,
+		"planetary_system": "TRAPPIST-1 System"
+	},
+	{
+		"id": "15c04f5d-a0a7-46c8-82b1-1e9d9d2a7b7c",
+		"name": "Kepler-90i",
+		"type": "gaseous",
+		"distance_to_star": 0.074,
+		"radius": 1.32,
+		"mass": 0.434,
+		"planetary_system": "Kepler-90 System"
 	}
 ]

@@ -1,0 +1,23 @@
+[
+	{
+		"id": "a1b2c3d4-e4f5-4g6h-7i8j-9k0l1m2n3o4p",
+		"name": "Milky Way",
+		"type": "New Barred spiral galaxy",
+		"age": 13.6,
+		"diameter": 100000
+	},
+	{
+		"id": "b1c2d3e4-f4g5-4h6i-7j8k-9l0m1n2o3p4q",
+		"name": "Andromeda",
+		"type": "Spiral galaxy",
+		"age": 10.1,
+		"diameter": 220000
+	},
+	{
+		"id": "c1d2e3f4-g4h5-4i6j-7k8l-9m0n1o2p3q4r",
+		"name": "Triangulum",
+		"type": "Spiral galaxy",
+		"age": 10,
+		"diameter": 60000
+	}
+]
