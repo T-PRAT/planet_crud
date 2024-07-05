@@ -12,4 +12,5 @@ router.get('/systems', viewPlanetarySystem);
 router.get('/systems/:id', viewPlanetarySystemById);
 router.get('/galaxies', viewGalaxies);
 router.get('/galaxies/:id', viewGalaxyById);
+
 export default router;
