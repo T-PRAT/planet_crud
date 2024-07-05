@@ -15,9 +15,10 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(process.cwd(), 'views'));
 
 app.use(loggerMiddleware);
-app.use(errorHandler);
 
 app.use(routes);
+
+app.use(errorHandler);
 
 app.listen(PORT, () => {
 	console.log(`Server is running on http://localhost:${PORT}`);
