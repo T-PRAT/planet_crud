@@ -1,6 +1,6 @@
 {
-  "id": "583fec06-ce6a-49bf-8dc2-cb92ae00a727",
-  "prevId": "00000000-0000-0000-0000-000000000000",
+  "id": "2a452135-2a59-4f80-8f69-5c474f8af356",
+  "prevId": "583fec06-ce6a-49bf-8dc2-cb92ae00a727",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
@@ -84,7 +84,7 @@
           "name": "galaxy_id",
           "type": "uuid",
           "primaryKey": false,
-          "notNull": true
+          "notNull": false
         }
       },
       "indexes": {},
@@ -151,7 +151,7 @@
           "name": "planetary_system_id",
           "type": "uuid",
           "primaryKey": false,
-          "notNull": true
+          "notNull": false
         }
       },
       "indexes": {},
@@ -206,7 +206,7 @@
           "name": "planet_id",
           "type": "uuid",
           "primaryKey": false,
-          "notNull": true
+          "notNull": false
         }
       },
       "indexes": {},

@@ -1,5 +1,5 @@
 CREATE TABLE IF NOT EXISTS "galaxies" (
-	"id" serial PRIMARY KEY NOT NULL,
+	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
 	"name" text NOT NULL,
 	"type" text NOT NULL,
 	"age" integer NOT NULL,
@@ -7,30 +7,30 @@ CREATE TABLE IF NOT EXISTS "galaxies" (
 );
 --> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "planetary_systems" (
-	"id" serial PRIMARY KEY NOT NULL,
+	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
 	"name" text NOT NULL,
 	"star" text NOT NULL,
 	"star_type" text NOT NULL,
 	"age" integer NOT NULL,
-	"galaxy_id" integer NOT NULL
+	"galaxy_id" uuid NOT NULL
 );
 --> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "planets" (
-	"id" serial PRIMARY KEY NOT NULL,
+	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
 	"name" text NOT NULL,
 	"type" text NOT NULL,
 	"distance_to_sun" integer NOT NULL,
 	"radius" integer NOT NULL,
 	"mass" integer NOT NULL,
-	"planetary_system_id" integer NOT NULL
+	"planetary_system_id" uuid NOT NULL
 );
 --> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "satellites" (
-	"id" serial PRIMARY KEY NOT NULL,
+	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
 	"name" text NOT NULL,
 	"distance_to_planet" integer NOT NULL,
 	"radius" integer NOT NULL,
-	"planet_id" integer NOT NULL
+	"planet_id" uuid NOT NULL
 );
 --> statement-breakpoint
 DO $$ BEGIN
