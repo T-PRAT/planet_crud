@@ -15,6 +15,20 @@
       "when": 1726060390610,
       "tag": "0001_greedy_mikhail_rasputin",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1726129409896,
+      "tag": "0002_sticky_frog_thor",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1726134470524,
+      "tag": "0003_stale_magneto",
+      "breakpoints": true
     }
   ]
 }

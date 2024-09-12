@@ -1,5 +1,11 @@
 import { integer, pgTable, text, uuid } from "drizzle-orm/pg-core";
 
+export const users = pgTable("users", {
+  id: uuid("id").primaryKey().defaultRandom(),
+  email: text("email").notNull().unique(),
+  password: text("password").notNull(),
+});
+
 export const galaxies = pgTable("galaxies", {
   id: uuid("id").primaryKey().defaultRandom(),
   name: text("name").notNull(),
@@ -34,6 +40,9 @@ export const satellites = pgTable("satellites", {
   radius: integer("radius").notNull(),
   planetId: uuid("planet_id").references(() => planets.id),
 });
+
+export type insertUsers = typeof users.$inferInsert;
+export type SelectUsers = typeof users.$inferSelect;
 
 export type insertGalaxies = typeof galaxies.$inferInsert;
 export type SelectGalaxies = typeof galaxies.$inferSelect;
