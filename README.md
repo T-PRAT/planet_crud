@@ -1,6 +1,7 @@
 # 🪐Planet Crud
 
 This is a simple API that provides endpoints to manage and retrieve information about galaxies, planetary systems, planets, and satellites.
+It uses [Drizzle ORM](https://www.drizzle.team/) for the database and [Zod](https://github.com/colinhacks/zod) for validation.
 
 # Installation
 
@@ -13,6 +14,12 @@ npm start
 ```
 
 # Endpoints
+
+## 🔐 Auth
+
+- Register: `POST /auth/register`
+- Login: `POST /auth/login`
+- Logout: `POST /auth/logout`
 
 ## 🛰️ Satellites
 

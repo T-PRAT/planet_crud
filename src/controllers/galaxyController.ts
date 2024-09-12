@@ -1,6 +1,8 @@
 import { APIResponse } from "../utils/response";
 import { findGalaxies, findGalaxyById, pushGalaxy, destroyGalaxy, updateGalaxy } from "../models/galaxyModel";
 import { Request, Response, NextFunction } from "express";
+import { galaxySchema } from "../validation/galaxy";
+import { z } from "zod";
 
 export const getGalaxies = async (req: Request, res: Response, next: NextFunction) => {
   try {
@@ -24,12 +26,13 @@ export const getGalaxyById = async (req: Request, res: Response, next: NextFunct
 
 export const addGalaxy = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const newGalaxy = {
-      ...req.body,
-    };
-    const result = await pushGalaxy(newGalaxy);
+    const galaxy = galaxySchema.parse(req.body);
+    const result = await pushGalaxy(galaxy);
     APIResponse(res, result, "Galaxy added", 201);
   } catch (error) {
+    if (error instanceof z.ZodError) {
+      return APIResponse(res, [], error.issues[0].message, 400);
+    }
     next(error);
   }
 };
@@ -45,9 +48,13 @@ export const deleteGalaxyById = async (req: Request, res: Response, next: NextFu
 
 export const updateGalaxyById = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const result = await updateGalaxy(req.params.id, req.body);
+    const galaxy = galaxySchema.parse(req.body);
+    const result = await updateGalaxy(req.params.id, galaxy);
     APIResponse(res, result, "A galaxy has been updated", 202);
   } catch (error) {
+    if (error instanceof z.ZodError) {
+      return APIResponse(res, [], error.issues[0].message, 400);
+    }
     next(error);
   }
 };

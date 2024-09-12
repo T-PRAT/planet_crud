@@ -1,6 +1,8 @@
 import { APIResponse } from "../utils/response";
 import { findPlanets, findPlanetById, findPlanetsBySolarSystemId, pushPlanet, destroyPlanet, updatePlanet } from "../models/planetModel";
 import { Request, Response, NextFunction } from "express";
+import { planetSchema } from "../validation/planets";
+import { z } from "zod";
 
 export const getPlanets = async (req: Request, res: Response, next: NextFunction) => {
   try {
@@ -34,12 +36,13 @@ export const getPlanetBySolarSystemName = async (req: Request, res: Response, ne
 
 export const addPlanet = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const newPlanet = {
-      ...req.body,
-    };
-    const result = await pushPlanet(newPlanet);
+    const planet = planetSchema.parse(req.body);
+    const result = await pushPlanet(planet);
     APIResponse(res, result, "Planet added", 201);
   } catch (error) {
+    if (error instanceof z.ZodError) {
+      return APIResponse(res, [], error.issues[0].message, 400);
+    }
     next(error);
   }
 };
@@ -55,9 +58,13 @@ export const deletePlanetById = async (req: Request, res: Response, next: NextFu
 
 export const updatePlanetById = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const result = await updatePlanet(req.params.id, req.body);
+    const planet = planetSchema.parse(req.body);
+    const result = await updatePlanet(req.params.id, planet);
     APIResponse(res, result, "A planet has been updated", 202);
   } catch (error) {
+    if (error instanceof z.ZodError) {
+      return APIResponse(res, [], error.issues[0].message, 400);
+    }
     next(error);
   }
 };

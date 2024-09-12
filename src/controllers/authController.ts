@@ -4,22 +4,28 @@ import { findUserByEmail, pushUser } from "../models/userModels";
 import { hashPassword, verifyPassword } from "../utils/password";
 import jwt from "jsonwebtoken";
 import { env } from "../config/env";
+import { userSchema } from "../validation/users";
+import { z } from "zod";
 
 const { JWT_SECRET, NODE_ENV } = env;
 
 export const register = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const emailAlreadyExists = await findUserByEmail(req.body.email);
+    const { email, password } = userSchema.parse(req.body);
+    const emailAlreadyExists = await findUserByEmail(email);
     if (emailAlreadyExists) return APIResponse(res, [], "Email already exists", 400);
 
-    const hash = await hashPassword(req.body.password);
+    const hash = await hashPassword(password);
     if (!hash) return APIResponse(res, [], "Invalid password", 400);
     const result = await pushUser({
-      email: req.body.email,
+      email: email,
       password: hash,
     });
     APIResponse(res, result[0].id, "You are registered", 201);
   } catch (error) {
+    if (error instanceof z.ZodError) {
+      return APIResponse(res, [], error.issues[0].message, 400);
+    }
     next(error);
   }
 };

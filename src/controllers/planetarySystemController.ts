@@ -11,10 +11,8 @@ import { Request, Response, NextFunction } from "express";
 
 export const getPlanetarySystems = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    console.log("REQ", req.params);
     const result = await findPlanetarySystems();
     if (!result) throw new Error("No planetary systems found");
-    console.log("RESSS", result);
     APIResponse(res, result, "All planetary systems");
   } catch (error) {
     next(error);

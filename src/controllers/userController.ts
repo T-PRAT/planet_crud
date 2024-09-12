@@ -1,7 +1,6 @@
 import { APIResponse } from "../utils/response";
 import { Request, Response, NextFunction } from "express";
 import { findUsers, findUserById, pushUser, destroyUser } from "../models/userModels";
-import { hashPassword } from "../utils/password";
 
 export const getUsers = async (req: Request, res: Response, next: NextFunction) => {
   try {
