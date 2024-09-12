@@ -10,7 +10,7 @@ const { JWT_SECRET, NODE_ENV } = env;
 export const register = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const emailAlreadyExists = await findUserByEmail(req.body.email);
-    if (emailAlreadyExists && emailAlreadyExists.length > 0) return APIResponse(res, [], "Email already exists", 400);
+    if (emailAlreadyExists) return APIResponse(res, [], "Email already exists", 400);
 
     const hash = await hashPassword(req.body.password);
     if (!hash) return APIResponse(res, [], "Invalid password", 400);
@@ -28,10 +28,10 @@ export const login = async (req: Request, res: Response, next: NextFunction) => 
   try {
     const user = await findUserByEmail(req.body.email);
     if (!user) return APIResponse(res, [], "Invalid email or password", 400);
-    const passwordIsCorrect = await verifyPassword(req.body.password, user[0].password);
+    const passwordIsCorrect = await verifyPassword(req.body.password, user.password);
     if (!passwordIsCorrect) return APIResponse(res, [], "Invalid email or password", 400);
 
-    const token = jwt.sign({ id: user[0].id }, JWT_SECRET!, { expiresIn: "2m" });
+    const token = jwt.sign({ id: user.id }, JWT_SECRET!, { expiresIn: "1h" });
     res.cookie("token", token, { httpOnly: true, sameSite: "strict", secure: NODE_ENV === "production" });
     APIResponse(res, null, "You are logged in", 200);
   } catch (error) {

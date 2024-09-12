@@ -6,14 +6,15 @@ import galaxyRoutes from "./galaxyRoutes";
 import userRoutes from "./userRoutes";
 import authRoutes from "./authRoutes";
 import { Router } from "express";
+import { authMiddleware } from "../middlewares/authMiddleware";
 
 const router = Router();
 
-router.use("/views", viewRoutes);
-router.use("/planets", planetRoutes);
-router.use("/satellites", satelliteRoutes);
-router.use("/planetarySystems", planetarySystemRoutes);
-router.use("/galaxies", galaxyRoutes);
+router.use("/views", authMiddleware, viewRoutes);
+router.use("/planets", authMiddleware, planetRoutes);
+router.use("/satellites", authMiddleware, satelliteRoutes);
+router.use("/planetarySystems", authMiddleware, planetarySystemRoutes);
+router.use("/galaxies", authMiddleware, galaxyRoutes);
 router.use("/users", userRoutes);
 router.use("/auth", authRoutes);
 
