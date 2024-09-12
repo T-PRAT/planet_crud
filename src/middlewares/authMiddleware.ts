@@ -6,7 +6,7 @@ const { JWT_SECRET } = env;
 
 export const authMiddleware = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const token = req.headers.cookie?.split(";")[0]?.split("=")[1];
+    const token = req.cookies.token;
     if (!token) return res.status(401).json({ message: "You are not logged in" });
     const decoded = jwt.verify(token, JWT_SECRET!);
     res.locals.user = decoded;

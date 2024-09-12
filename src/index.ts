@@ -3,11 +3,13 @@ import routes from "./routes/index";
 import path from "path";
 import { loggerMiddleware } from "./middlewares/logger";
 import { errorHandler } from "./middlewares/error";
+import cookieParser from "cookie-parser";
 
 const app = express();
 
 const PORT = 3000;
 
+app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
