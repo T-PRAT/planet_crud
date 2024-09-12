@@ -9,6 +9,11 @@ It uses [Drizzle ORM](https://www.drizzle.team/) for the database and [Zod](http
 # Install dependencies
 npm install
 
+# Create a .env file
+
+# Build the server
+npm run build
+
 # Start the server
 npm start
 ```
