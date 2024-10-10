@@ -1,11 +1,11 @@
 import { APIResponse } from "../utils/response";
 import { Request, Response, NextFunction } from "express";
-import { findUserByEmail, pushUser } from "../models/userModels";
+import { findUserByEmail, pushUser, updateUser } from "../models/userModels";
 import { hashPassword, verifyPassword } from "../utils/password";
 import { userSchema } from "../validation/users";
 import { z } from "zod";
 import { logger } from "../utils/logger";
-import { generateAccessToken, generateRefreshToken, verifyRefreshToken } from "../utils/token";
+import { generateAccessToken, generateRefreshToken } from "../utils/token";
 import { env } from "../config/env";
 
 export const register = async (req: Request, res: Response, next: NextFunction) => {
@@ -42,8 +42,11 @@ export const login = async (req: Request, res: Response, next: NextFunction) => 
     }
     const token = generateAccessToken(user.id);
     const refreshToken = generateRefreshToken(user.id);
+
     res.cookie("token", token, { httpOnly: true, sameSite: "strict", secure: env.NODE_ENV === "production" });
-    res.cookie("token", refreshToken, { httpOnly: true, sameSite: "strict", secure: env.NODE_ENV === "production" });
+    res.cookie("refreshToken", refreshToken, { httpOnly: true, sameSite: "strict", secure: env.NODE_ENV === "production" });
+
+    await updateUser(user.id, { refreshToken: refreshToken });
     APIResponse(res, null, "You are logged in", 200);
   } catch (error) {
     logger.error(error);

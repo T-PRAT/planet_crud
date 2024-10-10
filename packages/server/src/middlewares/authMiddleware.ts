@@ -2,17 +2,41 @@ import { Request, Response, NextFunction } from "express";
 import jwt from "jsonwebtoken";
 import { env } from "../config/env";
 import { APIResponse } from "../utils/response";
+import { verifyRefreshToken, generateAccessToken, generateRefreshToken } from "../utils/token";
+import { findUserById, updateUser } from "../models/userModels";
 
 const { ACCESS_TOKEN_SECRET } = env;
 
 export const authMiddleware = async (req: Request, res: Response, next: NextFunction) => {
-  const { token } = req.cookies;
-  if (!token) return res.status(401).json({ message: "You are not logged in" });
-  try {
-    const decoded = jwt.verify(token, ACCESS_TOKEN_SECRET!);
-    res.locals.user = decoded;
-    next();
-  } catch (error) {
-    return APIResponse(res, [], "Invalid token", 401);
+  const { token, refreshToken } = req.cookies;
+
+  if (!token && !refreshToken) {
+    return APIResponse(res, [], "You are not logged in", 401);
   }
+  if (token) {
+    try {
+      jwt.verify(token, ACCESS_TOKEN_SECRET!);
+      return next();
+    } catch (error) {
+      console.error("Invalid Refresh Token", error);
+      return null;
+    }
+  }
+  const userId = verifyRefreshToken(refreshToken);
+  const user = await findUserById(userId);
+
+  if (!userId || !user || user.refreshToken !== refreshToken) {
+    res.clearCookie("token");
+    res.clearCookie("refreshToken");
+    return APIResponse(res, [], "Invalid token", 403);
+  }
+  const newToken = generateAccessToken(user.id);
+  const newRefreshToken = generateRefreshToken(user.id);
+
+  await updateUser(user.id, { refreshToken: newRefreshToken });
+
+  res.cookie("token", newToken, { httpOnly: true, sameSite: "strict", secure: env.NODE_ENV === "production" });
+  res.cookie("refreshToken", newRefreshToken, { httpOnly: true, sameSite: "strict", secure: env.NODE_ENV === "production" });
+
+  next();
 };

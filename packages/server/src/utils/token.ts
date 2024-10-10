@@ -13,8 +13,8 @@ export const generateRefreshToken = (id: string) => {
 
 export const verifyRefreshToken = (token: string) => {
   try {
-    const decoded = jwt.verify(token, REFRESH_TOKEN_SECRET!);
-    return decoded;
+    const decoded = jwt.verify(token, REFRESH_TOKEN_SECRET!) as { id: string };
+    return decoded.id;
   } catch (error) {
     throw new Error("Error verifying refresh token");
   }

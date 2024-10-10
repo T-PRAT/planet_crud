@@ -22,7 +22,7 @@ export const getGalaxyById = async (req: Request, res: Response, next: NextFunct
     if (!result) throw new Error("Galaxy not found");
     APIResponse(res, result, "Galaxy found");
   } catch (error) {
-    logger.error(error);
+    logger.error("ERROR");
     next(error);
   }
 };
