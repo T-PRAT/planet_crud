@@ -5,3 +5,5 @@ export * from "./planets";
 export * from "./satellites";
 export * from "./users";
 export * from "./types";
+export * from "./rooms";
+export * from "./messages";

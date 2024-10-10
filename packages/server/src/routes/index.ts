@@ -5,6 +5,7 @@ import planetarySystemRoutes from "./planetarySystemRoutes";
 import galaxyRoutes from "./galaxyRoutes";
 import userRoutes from "./userRoutes";
 import authRoutes from "./authRoutes";
+import uploadRoutes from "./uploadRoutes";
 import { Router } from "express";
 import { authMiddleware } from "../middlewares/authMiddleware";
 
@@ -17,5 +18,6 @@ router.use("/planetarySystems", authMiddleware, planetarySystemRoutes);
 router.use("/galaxies", authMiddleware, galaxyRoutes);
 router.use("/users", userRoutes);
 router.use("/auth", authRoutes);
+router.use("/upload", uploadRoutes);
 
 export default router;

@@ -43,6 +43,34 @@
       "when": 1728551909129,
       "tag": "0005_special_guardian",
       "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1728569994761,
+      "tag": "0006_quiet_corsair",
+      "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "7",
+      "when": 1728570050510,
+      "tag": "0007_nice_red_shift",
+      "breakpoints": true
+    },
+    {
+      "idx": 8,
+      "version": "7",
+      "when": 1728570080058,
+      "tag": "0008_harsh_daredevil",
+      "breakpoints": true
+    },
+    {
+      "idx": 9,
+      "version": "7",
+      "when": 1728572127152,
+      "tag": "0009_daffy_agent_zero",
+      "breakpoints": true
     }
   ]
 }
