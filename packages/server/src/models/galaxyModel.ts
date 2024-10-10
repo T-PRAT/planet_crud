@@ -1,5 +1,5 @@
 import { db } from "../config/db";
-import { galaxies, SelectGalaxies, insertGalaxies } from "../schema";
+import { galaxies, SelectGalaxies, insertGalaxies } from "../schema/index";
 import { eq } from "drizzle-orm";
 
 export const findGalaxies = () => {

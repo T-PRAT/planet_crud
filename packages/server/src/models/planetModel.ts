@@ -1,5 +1,5 @@
 import { db } from "../config/db";
-import { planets, SelectPlanets, insertPlanets } from "../schema";
+import { planets, SelectPlanets, insertPlanets } from "../schema/index";
 import { eq } from "drizzle-orm";
 import { isNull } from "drizzle-orm/sql";
 

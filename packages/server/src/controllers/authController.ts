@@ -1,14 +1,12 @@
 import { APIResponse } from "../utils/response";
-import { Request, Response, NextFunction, response } from "express";
+import { Request, Response, NextFunction } from "express";
 import { findUserByEmail, pushUser } from "../models/userModels";
 import { hashPassword, verifyPassword } from "../utils/password";
-import jwt from "jsonwebtoken";
-import { env } from "../config/env";
 import { userSchema } from "../validation/users";
 import { z } from "zod";
 import { logger } from "../utils/logger";
-
-const { JWT_SECRET, NODE_ENV } = env;
+import { generateAccessToken, generateRefreshToken, verifyRefreshToken } from "../utils/token";
+import { env } from "../config/env";
 
 export const register = async (req: Request, res: Response, next: NextFunction) => {
   try {
@@ -42,8 +40,10 @@ export const login = async (req: Request, res: Response, next: NextFunction) => 
       logger.error("Invalid email or password");
       return APIResponse(res, [], "Invalid email or password", 400);
     }
-    const token = jwt.sign({ id: user.id }, JWT_SECRET!, { expiresIn: "1h" });
-    res.cookie("token", token, { httpOnly: true, sameSite: "strict", secure: NODE_ENV === "production" });
+    const token = generateAccessToken(user.id);
+    const refreshToken = generateRefreshToken(user.id);
+    res.cookie("token", token, { httpOnly: true, sameSite: "strict", secure: env.NODE_ENV === "production" });
+    res.cookie("token", refreshToken, { httpOnly: true, sameSite: "strict", secure: env.NODE_ENV === "production" });
     APIResponse(res, null, "You are logged in", 200);
   } catch (error) {
     logger.error(error);

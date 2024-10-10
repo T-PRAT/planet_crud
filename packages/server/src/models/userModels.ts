@@ -1,5 +1,5 @@
 import { db } from "../config/db";
-import { users, SelectUsers, insertUsers } from "../schema";
+import { users, SelectUsers, insertUsers } from "../schema/index";
 import { eq } from "drizzle-orm";
 
 export const findUsers = () => {

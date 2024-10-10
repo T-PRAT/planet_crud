@@ -29,6 +29,13 @@
       "when": 1726134470524,
       "tag": "0003_stale_magneto",
       "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1728548419231,
+      "tag": "0004_legal_wong",
+      "breakpoints": true
     }
   ]
 }
