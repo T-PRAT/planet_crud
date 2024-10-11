@@ -14,14 +14,14 @@ export const getRoom = async (socket: Socket, roomId: string) => {
   }
 };
 
-export const addRoom = async (req: Request, socket: Socket) => {
-  const body = await req.json();
-  const name = body?.name;
+export const addRoom = async (name: any, socket: Socket) => {
+  // const body = await req.json();
+  // const name = body?.name;
   if (!name) {
     return;
   }
   try {
-    const roomName = body.name;
+    const roomName = name;
     const room = await pushRoom(roomName);
     socket.emit("room", room);
   } catch (error) {
