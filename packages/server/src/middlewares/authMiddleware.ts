@@ -18,7 +18,9 @@ export const authMiddleware = async (req: Request, res: Response, next: NextFunc
       jwt.verify(token, ACCESS_TOKEN_SECRET!);
       return next();
     } catch (error) {
-      console.error("Invalid Refresh Token", error);
+      res.clearCookie("token");
+      res.clearCookie("refreshToken");
+      console.error("Invalid Token", error);
       return null;
     }
   }

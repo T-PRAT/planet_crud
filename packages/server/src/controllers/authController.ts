@@ -57,6 +57,7 @@ export const login = async (req: Request, res: Response, next: NextFunction) => 
 export const logout = async (req: Request, res: Response, next: NextFunction) => {
   try {
     res.clearCookie("token");
+    res.clearCookie("refreshToken");
     APIResponse(res, null, "You are logged out", 200);
   } catch (error) {
     logger.error(error);
