@@ -7,6 +7,10 @@ export const findMessagesByRoomId = async (roomId: string) => {
   return db.select({ content: messages.content }).from(messages).where(eq(messages.roomId, roomId)).execute();
 };
 
-export const pushMessage = async (newMessage: insertMessages) => {
+// export const pushMessage = async (newMessage: insertMessages) => {
+//   return db.insert(messages).values(newMessage).execute();
+// };
+
+export const pushMessage = async (newMessage: { content: string; roomId: string }) => {
   return db.insert(messages).values(newMessage).execute();
 };
