@@ -4,13 +4,13 @@ import path from "path";
 import { loggerMiddleware } from "./middlewares/logger";
 import { errorHandler } from "./middlewares/error";
 import cookieParser from "cookie-parser";
-import http from 'http';
-import { initializeSocketServer } from './controllers/socketEvent';
+import http from "http";
+import { initializeSocketServer } from "./controllers/socketEvent";
 
 const app = express();
 const server = http.createServer(app);
 
-const PORT = 3001;
+const PORT = 3000;
 
 initializeSocketServer(server);
 
