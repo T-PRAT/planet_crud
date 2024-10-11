@@ -20,7 +20,7 @@ export const authMiddleware = async (req: Request, res: Response, next: NextFunc
     } catch (error) {
       res.clearCookie("token");
       res.clearCookie("refreshToken");
-      console.error("Invalid Refresh Token", error);
+      console.error("Invalid Token", error);
       return null;
     }
   }
